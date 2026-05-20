@@ -13,7 +13,7 @@ This project was developed to strengthen my understanding of full-stack web deve
 
 ![Login Page](screenshots/login.png)
 
----
+
 ---
 ##  Features
 
