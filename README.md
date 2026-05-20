@@ -17,15 +17,12 @@ This project was developed to strengthen my understanding of full-stack web deve
 ---
 ##  Features
 
-- User Authentication (Signup/Login)
-- Create New Recipes
-- Edit Existing Recipes
-- Delete Recipes
-- View Detailed Recipe Information
-- Image Upload Support
-- Responsive and Interactive UI
-- REST API Integration
-- Full CRUD Operations
+- Create, Edit, and Delete Recipes
+- Secure User Authentication
+- Recipe Image Upload Support
+- Dynamic Recipe Listing
+- Detailed Recipe View Page
+- Responsive User Interface
 
 ---
 
