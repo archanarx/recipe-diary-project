@@ -22,23 +22,19 @@ This project was developed to strengthen my understanding of full-stack web deve
 
 ## 🛠️ Tech Stack
 
-### Frontend - React.js
+ Frontend - React.js
 
-### Backend - Django
+ Backend - Django
 
-### Database - MySQL
+ Database - MySQL
 
-### Tools & Technologies - Git, GitHub, VS Code
+ Tools & Technologies - Git, GitHub, VS Code
 
 ---
 
-## 📂 Project Structure
+## 👩‍💻 Author
 
-recipe-diary-project/
-│
-├── recipediary/        # Django Backend
-│
-├── userpanel/          # React Frontend
-│
-└── .gitignore
+**Archana R**
 
+GitHub:  
+https://github.com/archanarx
