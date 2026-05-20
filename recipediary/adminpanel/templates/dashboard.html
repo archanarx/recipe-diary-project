@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4 fw-semibold">Dashboard</h2>
+
+<div class="row g-4">
+
+<div class="col-md-3">
+<div class="card shadow-sm border-0">
+<div class="card-body text-center">
+<h6 class="text-muted">Total Users</h6>
+
+<h2 class="fw-bold text-danger-emphasis">{{ total_users }}</h2>
+
+<p class="mb-0 text-muted">
+<i class="bi bi-people me-2 text-danger-emphasis"></i>Registered Users
+</p>
+
+
+</div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card shadow-sm border-0">
+<div class="card-body text-center">
+<h6 class="text-muted">Total Recipes</h6>
+<h2 class="fw-bold text-danger-emphasis">{{ total_recipes }}</h2>
+
+<p class="mb-0 text-muted">
+    <i class="bi bi-journal-text text-dark"></i> Recipes Posted
+</p>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card shadow-sm border-0">
+<div class="card-body text-center">
+<h6 class="text-muted">Active Users</h6>
+<h2 class="fw-bold text-danger-emphasis">{{ active_users }}</h2>
+
+<p class="mb-0 text-muted">
+    <i class="bi bi-person-check text-dark"></i> Currently Active
+</p>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card shadow-sm border-0">
+<div class="card-body text-center">
+<h6 class="text-muted">Most Viewed</h6>
+<h2 class="fw-bold text-danger-emphasis">{{ most_viewed }}</h2>
+
+<p class="mb-0 text-muted">
+    <i class="bi bi-fire text-dark"></i> Top Recipe Views
+</p>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="card mt-5 shadow-sm border-0">
+
+<div class="card-body">
+
+<h4 class="mb-3">Recent Recipes</h4>
+
+<table class="table table-hover align-middle">
+
+<thead class="table-light">
+<tr>
+<th>Recipe</th>
+<th>Creator</th>
+<th>Views</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+{% for recipe in recent_recipes %}
+<tr>
+<td>{{ recipe.title }}</td>
+<td>{{ recipe.author.name }}</td>
+<td>{{ recipe.views }}</td>
+<td>
+<a href="{% url 'recipe_details' recipe.id %}" class="btn btn-sm btn-outline-secondary">
+<i class="bi bi-eye me-1"></i>View
+</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+
+</div>
+</div>
+
+{% endblock %}

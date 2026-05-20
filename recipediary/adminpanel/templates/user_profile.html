@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4 fw-semibold">User Profile</h2>
+
+<div class="card shadow-sm border-0 mb-4">
+<div class="card-body">
+
+<div class="row align-items-center">
+
+<!-- User Details -->
+<div class="col-md-8">
+
+<p class="mb-2"><strong>Name:</strong> {{ user_data.name }}</p>
+<p class="mb-2"><strong>Email:</strong> {{ user_data.email }}</p>
+
+
+<p>
+<strong>Status:</strong>
+{% if user_data.is_active %}
+  <span class="badge bg-success">Active</span>
+{% else %}
+  <span class="badge bg-warning text-dark">Blocked</span>
+{% endif %}
+</p>
+
+
+<!-- <button class="btn btn-outline-danger mt-3">Block User</button> -->
+ <form method="POST" action="{% url 'toggle_user' user_data.id %}">
+  {% csrf_token %}
+  
+  <button class="btn btn-outline-danger mt-3">
+    {% if user_data.is_active %}
+      Block User
+    {% else %}
+      Unblock User
+    {% endif %}
+  </button>
+</form>
+
+</div>
+
+<!-- Profile Picture -->
+<div class="col-md-4 text-center">
+
+
+<img 
+  src="{{ profile_pic|default:'https://via.placeholder.com/150' }}"
+  class="img-fluid rounded-circle shadow"
+  width="150"
+>
+
+<!-- <img 
+  src="{% if user_data.profile_pic %}{{ user_data.profile_pic.url }}{% else %}https://via.placeholder.com/150{% endif %}"
+  class="img-fluid rounded-circle shadow"
+  width="150"
+  alt="Profile Picture"
+> -->
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- User Recipes Table -->
+
+<div class="card shadow-sm border-0">
+
+<div class="card-body">
+
+<h4 class="mb-3">User Recipes</h4>
+
+<table class="table table-hover align-middle">
+
+<thead class="table-light">
+
+<tr>
+<th>Title</th>
+<th>Views</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody>
+{% for recipe in recipes %}
+<tr>
+<td>{{ recipe.title }}</td>
+<td>{{ recipe.views }}</td>
+<td>{{ recipe.created_at|date:"d M Y" }}</td>
+
+<td>
+<a href="{% url 'recipe_details' recipe.id %}" class="btn btn-sm btn-outline-secondary">
+<i class="bi bi-eye me-1"></i>View
+</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+
+<nav class="mt-4">
+
+<ul class="pagination justify-content-center">
+
+<li class="page-item disabled">
+<a class="page-link">Previous</a>
+</li>
+
+<li class="page-item active">
+<a class="page-link">1</a>
+</li>
+
+<li class="page-item">
+<a class="page-link">2</a>
+</li>
+
+<li class="page-item">
+<a class="page-link">Next</a>
+</li>
+
+</ul>
+
+</nav>
+
+</div>
+
+</div>
+
+{% endblock %}

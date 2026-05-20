@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4 fw-semibold">Recipe Details</h2>
+
+<div class="card shadow-sm border-0">
+
+<div class="card-body">
+
+<!-- Large Image -->
+
+<div class="text-center mb-4">
+
+<img src="{{ recipe.image.url }}" class="img-fluid rounded shadow">
+
+</div>
+
+<!-- Recipe Title -->
+
+<h3 class="fw-semibold">{{ recipe.title }}</h3>
+
+<p><strong>By:</strong> {{ recipe.author.name }}</p>
+
+<!-- Recipe Info -->
+
+<p class="mb-3">
+
+<strong>Views:</strong> {{ recipe.views }} |
+<strong>Duration:</strong> {{ recipe.time }} |
+<strong>Difficulty:</strong> {{ recipe.level }}
+
+</p>
+
+<hr>
+
+<!-- Description -->
+
+<!-- <h5 class="fw-semibold">Description</h5>;
+
+<p>
+A flavorful and aromatic chicken biryani made with spices,
+basmati rice, and tender chicken pieces.
+</p> -->
+
+<hr>
+
+<!-- Ingredients -->
+
+<h5 class="fw-semibold">Ingredients</h5>
+
+<p>{{ recipe.ingredients }}</p>
+
+<hr>
+
+<!-- Steps -->
+
+<h5 class="fw-semibold">Steps</h5>
+
+<p>{{ recipe.steps }}</p>
+
+</div>
+
+</div>
+
+{% endblock %}

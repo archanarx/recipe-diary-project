@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow-sm border-0">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<h3 class="fw-semibold mb-0">Manage Recipes</h3>
+
+<!-- <input type="text" class="form-control w-25 shadow-sm" placeholder=" Search recipes"> -->
+ <form method="GET" class="d-flex w-25">
+  <input 
+    type="text" 
+    name="q"
+    value="{{ query }}"
+    class="form-control shadow-sm" 
+    placeholder="Search recipes"
+  >
+</form>
+
+
+</div>
+
+<table class="table table-hover align-middle">
+
+<thead class="table-light">
+<tr>
+<th>#</th>
+<th>Recipe</th>
+<th>Creator</th>
+<th>Views</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+{% for recipe in recipes %}
+<tr>
+<td>{{ forloop.counter0|add:recipes.start_index }}</td>    
+
+
+<td>{{ recipe.title }}</td>
+
+<td>{{ recipe.author.name }}</td>
+
+<td>{{ recipe.views }}</td>
+
+<td>
+<span class="badge bg-success">Active</span>
+</td>
+
+<td>
+<a href="{% url 'recipe_details' recipe.id %}" class="btn btn-sm btn-outline-secondary">
+<i class="bi bi-eye me-1"></i>View
+</a>
+
+<form method="POST" action="{% url 'delete_recipe_admin' recipe.id %}" style="display:inline;">
+{% csrf_token %}
+<button class="btn btn-sm btn-outline-danger">
+Delete
+</button>
+</form>
+
+</td>
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+
+<nav class="mt-4">
+<ul class="pagination justify-content-center">
+
+{% if recipes.has_previous %}
+<li class="page-item">
+<a class="page-link" href="?page={{ recipes.previous_page_number }}&q={{ query }}">Previous</a>
+</li>
+{% endif %}
+
+{% for num in recipes.paginator.page_range %}
+<li class="page-item {% if recipes.number == num %}active{% endif %}">
+<a class="page-link" href="?page={{ num }}&q={{ query }}">{{ num }}</a>
+</li>
+{% endfor %}
+
+{% if recipes.has_next %}
+<li class="page-item">
+<a class="page-link" href="?page={{ recipes.next_page_number }}&q={{ query }}">Next</a>
+</li>
+{% endif %}
+
+</ul>
+</nav>
+
+</div>
+</div>
+
+{% endblock %}
