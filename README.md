@@ -20,7 +20,7 @@ This project was developed to strengthen my understanding of full-stack web deve
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
  Frontend - React.js
 
