@@ -5,9 +5,15 @@ A full-stack Recipe Management Web Application built using Django, Django REST F
 This project was developed to strengthen my understanding of full-stack web development, REST APIs, frontend-backend integration, authentication workflows, and database management.
 
 ---
-## 📸 Project Preview
+##  Project Preview
 
 ![Project Preview](screenshots/project-preview.png)
+
+##  Authentication Page
+
+![Login Page](screenshots/login.png)
+
+---
 ---
 ##  Features
 
